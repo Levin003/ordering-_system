@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+    </style>
+    <link rel="stylesheet" href="styles.css">  
+</head>
+<body>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+    </ul>
+    <h1>Menu</h1>
+
+    <!-- Beverages -->
+    <div class="menu-category">
+        <h2>Beverages</h2>
+        <div class="menu-items">
+            <div class="menuItem" onclick="showItemDetails('Coffee', 'images/cofee.jpg', 40)">
+                <img src="images/cofee.jpg" alt="Coffee">Coffee - sh 40
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Tea', 'images/tea.jpg', 30)">
+                <img src="images/tea.jpg" alt="Tea">Tea - sh 30
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Juice', 'images/juice.jpg', 50)">
+                <img src="images/juice.jpg" alt="Juice">Juice - sh 50
+            </div>
+        </div>
+    </div>
+
+    <!-- Meals -->
+    <div class="menu-category">
+        <h2>Meals</h2>
+        <div class="menu-items">
+            <div class="menuItem" onclick="showItemDetails('Pilau', 'images/pilau.jpg', 100)">
+                <img src="imagespilau.jpg" alt="Pilau">Pilau - sh 100
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Rice', 'images/rice.jpg', 50)">
+                <img src="images/rice.jpg" alt="Rice">Rice - sh 50
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Ugali', 'images/ugali.jpg', 50)">
+                <img src="images/ugali.jpg" alt="Ugali">Ugali- sh 50
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Pizza', 'images/pizza.jpg', 100)">
+                <img src="images/pizza.jpg" alt="Pizza">Pizza - sh 100
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Spaghetti', 'images/Spagetti.jpg', 100)">
+                <img src="images/Spagetti.jpg" alt="Spaghetti">Spaghetti - sh 100
+            </div>
+        </div>
+    </div>
+
+    <!-- Stews -->
+    <div class="menu-category">
+        <h2>Stews</h2>
+        <div class="menu-items">
+            <div class="menuItem" onclick="showItemDetails('Chicken', 'images/chicken_stew.jpg', 100)">
+                <img src="images/chicken_stew.jpg" alt="Chicken">Chicken - sh 100
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Fish', 'images/fish_stew.jpg', 100)">
+                <img src="images/fish_stew.jpg" alt="Fish">Fish - sh 100
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Beef', 'images/beef_stew.jpg', 100)">
+                <img src="images/beef_stew.jpg" alt="Beef">Beef - sh 100
+            </div>
+        </div>
+    </div>
+
+    <!-- Snacks -->
+    <div class="menu-category">
+        <h2>Snacks</h2>
+        <div class="menu-items">
+            <div class="menuItem" onclick="showItemDetails('French Fries', 'images/frenchfries.jpg', 100)">
+                <img src="images/frenchfries.jpg" alt="French Fries">French Fries - sh 100
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Cake', 'images/cake.jpg', 40)">
+                <img src="images/cake.jpg" alt="Cake">Cake - sh 40
+            </div>
+            <div class="menuItem" onclick="showItemDetails('Cookies', 'images/cookies.jpg', 20)">
+                <img src="images/cookies.jpg" alt="Cookies">Cookies - sh 20
+            </div>
+        </div>
+    </div>
+    <div id="itemDetails" style="display: none;">
+        <h2 id="itemName"></h2>
+        <img id="itemImage" src="" alt="Item Image">
+        <p id="itemPrice"></p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div id="cart" style="display: none;">
+        <h2>Shopping Cart</h2>
+        <ul id="cartItems"></ul>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+    
+    <script>
+        function showItemDetails(name, imageSrc, price) {
+            document.getElementById("itemName").innerText = name;
+            document.getElementById("itemImage").src = imageSrc;
+            document.getElementById("itemPrice").innerText = "Price: sh " + price;
+            document.getElementById("itemDetails").style.display = "block";
+        }
+
+        function addToCart() {
+            var itemName = document.getElementById("itemName").innerText;
+            var itemPrice = document.getElementById("itemPrice").innerText;
+            var cartItems = document.getElementById("cartItems");
+            var newItem = document.createElement("li");
+            newItem.innerText = itemName + " - " + itemPrice;
+            cartItems.appendChild(newItem);
+            document.getElementById("itemDetails").style.display = "none";
+            document.getElementById("cart").style.display = "block";
+        }
+
+        function checkout() {
+    // Redirect the user to payment.html
+    window.location.href = "payment.html";
+}
+
+
+    </script>
+</body>
+</html>
